@@ -29,22 +29,20 @@ public class MyString {
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        String x = str1;
-        String y = str2;
-        int checker = 0; 
-        for ( int i = 0 ; i < y.length() ; i++){
-            for ( int j = 0 ; j < x. length() ; j++) {
-                if ( y.charAt(i) == x.charAt(j)){
-                    checker++;
+        for (int i = 0; i <= str1.length() - str2.length(); i++) {
+            boolean match = true;
+            for (int j = 0; j < str2.length(); j++) {
+                if (str1.charAt(i + j) != str2.charAt(j)) {
+                    match = false;
+                    break;
                 }
             }
-            if ( checker == 0) return false;
-            checker = 0; 
+            if (match) return true;
         }
-        return true;
-        }
+        return false;
             
         }
+    }
 
     
 
