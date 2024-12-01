@@ -156,6 +156,7 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
+        if ( (str1. length() == 0) || (str2.length() == 0) ) return  -2;
         char[] arr1 = new char [str1.length()];
         char[] arr2 = new char [str2.length()];
         int N = arr1.length;
