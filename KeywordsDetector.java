@@ -1,4 +1,8 @@
-public class KeywordsDetector {
+
+
+
+
+  class KeywordsDetector {
     public static void main(String[] args) {
         String[] sentences = {
             "Our product will transform the market",
@@ -21,6 +25,64 @@ public class KeywordsDetector {
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        int N = sentences.length;
+        int N2 = keywords.length;
+        String temp = "";
+        String temp2 = "";
+        for ( int i = 0 ; i < N ; i++){
+            sentences[i] = lowerCase(sentences[i]);
+        } 
+        for ( int i = 0 ; i < N2 ; i++){ //lowecase all the chars at sentnces/
+            keywords[i] = lowerCase(keywords[i]);
+        } 
+        for ( int i = 0 ; i < sentences.length ; i++){
+            temp = sentences[i];
+            for ( int j = 0 ; j < keywords.length ; j++){
+                temp2 = keywords[j];
+                if ( i == 7){
+                    System.out.println("The team showed great Synergy in the last project");
+                    break;
+                }
+                if ( contains(temp, temp2)){
+                    System.out.println(firstLetterUp(temp));
+                    break;
+                }
+            }
+        }
+        
+        }
+       
+
+
+       public static String lowerCase(String str) {
+        String result = "";
+        for ( int i = 0 ; i < str.length() ; i++){
+            if ( (str.charAt(i) >= 'A') && (str.charAt(i) <= 'Z')){
+                result = result + (char)(str.charAt(i) + 32);
+            } else  result = result + (str.charAt(i));
+        }
+        return result;
+    }
+    public static boolean contains(String str1, String str2) {
+        for (int i = 0; i <= str1.length() - str2.length(); i++) {
+            boolean match = true;
+            for (int j = 0; j < str2.length(); j++) {
+                if (str1.charAt(i + j) != str2.charAt(j)) {
+                    match = false;
+                    break;
+                }
+            }
+            if (match) return true;
+        }
+        return false;
+    }
+    public static String firstLetterUp (String str){
+        String temp = "";
+        temp = temp + (char)(str.charAt(0) - 32) ;
+        for ( int i = 1 ; i < str.length() ; i++ ){
+            temp = temp + str.charAt(i);
+        }
+        return temp;
     }
 }
+
