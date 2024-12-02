@@ -69,7 +69,6 @@ public class ArrCharOps {
 
     public static char[] concat(char[] arr1, char[] arr2) {
         char[] arr3 = new char[arr1.length + arr2.length];
-        if (arr3.length == 0) return null;
         for (int i = 0; i < arr1.length; i++) {
             arr3[i] = arr1[i];
         }
