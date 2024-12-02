@@ -68,14 +68,21 @@ public class ArrCharOps {
     }
 
     public static char[] concat(char[] arr1, char[] arr2) {
-        char[] arr3 = new char[arr1.length + arr2.length];
+        if (arr1 == null || arr2 == null) {
+            return null;
+        }
+    
+        char[] result = new char[arr1.length + arr2.length];
+    
         for (int i = 0; i < arr1.length; i++) {
-            arr3[i] = arr1[i];
+            result[i] = arr1[i];
         }
+    
         for (int i = 0; i < arr2.length; i++) {
-            arr3[arr1.length + i] = arr2[i];
+            result[arr1.length + i] = arr2[i];
         }
-        return arr3;
+    
+        return result;
     }
 
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
