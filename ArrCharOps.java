@@ -67,22 +67,24 @@ public class ArrCharOps {
         return j;
     }
 
-    public static char[] concat(char[] arr1, char[] arr2) {
-        if (arr1 == null || arr2 == null) {
-            return null;
+    public static int compareTo(String str1, String str2) {
+        if (str1.length() == 0 || str2.length() == 0) return -2; // Return -2 for empty strings
+    
+        int len1 = str1.length(); 
+        int len2 = str2.length(); 
+        int minLength = Math.min(len1, len2); // Minimum length to prevent out-of-bounds
+    
+        // Compare characters of both strings up to the minimum length
+        for (int i = 0; i < minLength; i++) {
+            if (str1.charAt(i) < str2.charAt(i)) return -1; // str1 is lexicographically smaller
+            if (str1.charAt(i) > str2.charAt(i)) return 1;  // str1 is lexicographically larger
         }
     
-        char[] result = new char[arr1.length + arr2.length];
+        // If all characters match but lengths differ, compare by length
+        if (len1 < len2) return -1;
+        if (len1 > len2) return 1;
     
-        for (int i = 0; i < arr1.length; i++) {
-            result[i] = arr1[i];
-        }
-    
-        for (int i = 0; i < arr2.length; i++) {
-            result[arr1.length + i] = arr2[i];
-        }
-    
-        return result;
+        return 0; // Strings are lexicographically equal
     }
 
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
