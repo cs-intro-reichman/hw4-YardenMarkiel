@@ -94,15 +94,12 @@ public class ArrCharOps {
         return newarr;
     }
 
-    public static long hashCode(char[] arr) {
-        if (arr.length == 0) return 0;
-        int X = 0;
-        int J = arr.length - 1;
+    public static int hashCode(char[] arr) {
+        int result = 0;
         for (int i = 0; i < arr.length; i++) {
-            X = X + arr[i] * 7 ^ J;
-            J--;
+            result = 31 * result + arr[i];
         }
-        return X;
+        return result;
     }
 
     public static int compareTo(String str1, String str2) {
