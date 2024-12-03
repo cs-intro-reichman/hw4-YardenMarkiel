@@ -68,17 +68,23 @@ public class ArrCharOps {
     }
 
     public static char[] concat(char[] arr1, char[] arr2) {
-        if (arr1 == null || arr2 == null) return null;
+        if (arr1 == null || arr2 == null) {
+            return null;
+        }
+    
         char[] result = new char[arr1.length + arr2.length];
+    
         for (int i = 0; i < arr1.length; i++) {
             result[i] = arr1[i];
         }
+    
         for (int i = 0; i < arr2.length; i++) {
             result[arr1.length + i] = arr2[i];
         }
+    
         return result;
     }
-    
+
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
         char[] newarr = new char[endIndex - beginIndex];
         if (newarr.length == 0) return null;
@@ -100,20 +106,24 @@ public class ArrCharOps {
     }
 
     public static int compareTo(String str1, String str2) {
-        int len1 = str1.length();
-        int len2 = str2.length();
-        int minLength = Math.min(len1, len2);
-
-        for (int i = 0; i < minLength; i++) {
-            char ch1 = str1.charAt(i);
-            char ch2 = str2.charAt(i);
-
-            if (ch1 != ch2) {
-                return ch1 - ch2; // Return positive or negative based on lexicographical order
-            }
+        if ((str1.length() == 0) || (str2.length() == 0)) return -2;
+        char[] arr1 = new char[str1.length()];
+        char[] arr2 = new char[str2.length()];
+        int N = arr1.length;
+        int J = 0;
+        for (int i = 0; i < arr1.length; i++) {
+            if ((charAt(arr1, i) < 'A') && (charAt(arr1, i) > 'z')) return -2;
         }
-
-        // If one string is longer than the other
-        return len1 - len2;
+        for (int i = 0; i < arr2.length; i++) {
+            if ((charAt(arr2, i) < 'A') && (charAt(arr1, i) > 'z')) return -2;
+        }
+        if (arr2.length < N) return 1;
+        else if (N != arr2.length) return -1;
+        for (int i = 0; i < N; i++) {
+            if (charAt(arr1, i) > charAt(arr2, J)) return 1;
+            else if (charAt(arr1, i) < charAt(arr2, J)) return -1;
+            J++;
+        }
+        return 0;
     }
 }
