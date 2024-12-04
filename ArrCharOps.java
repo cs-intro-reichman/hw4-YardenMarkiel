@@ -105,30 +105,31 @@ public class ArrCharOps {
     return result;
 }
 
-    public static int compareTo(String str1, String str2) {
-        if (str1.length() == 0 || str2.length() == 0) return -2;
-    
-        int N = str1.length();
-        int J = str2.length();
-    
-        // Check for invalid characters in the strings
-        for (int i = 0; i < N; i++) {
-            if (str1.charAt(i) < 'A' || str1.charAt(i) > 'z') return -2;
-        }
-        for (int i = 0; i < J; i++) {
-            if (str2.charAt(i) < 'A' || str2.charAt(i) > 'z') return -2;
-        }
-    
-        // Compare lengths of the strings
-        if (N < J) return -1;
-        else if (N > J) return 1;
-    
-        // Compare characters one by one
-        for (int i = 0; i < N; i++) {
-            if (str1.charAt(i) > str2.charAt(i)) return 1;
-            else if (str1.charAt(i) < str2.charAt(i)) return -1;
-        }
-    
-        return 0;  // Strings are equal
+public static int compareTo(String str1, String str2) {
+    if (str1.length() == 0 || str2.length() == 0) return -2;
+
+    int N = str1.length();
+    int J = str2.length();
+
+    // Check for invalid characters in the strings
+    for (int i = 0; i < N; i++) {
+        if (str1.charAt(i) < 'A' || str1.charAt(i) > 'z') return -2;
     }
+    for (int i = 0; i < J; i++) {
+        if (str2.charAt(i) < 'A' || str2.charAt(i) > 'z') return -2;
+    }
+
+    // Compare characters one by one, up to the shorter length
+    int minLength = (N < J) ? N : J; 
+    for (int i = 0; i < minLength; i++) {
+        if (str1.charAt(i) > str2.charAt(i)) return 1;
+        else if (str1.charAt(i) < str2.charAt(i)) return -1;
+    }
+
+    // Compare lengths of the strings
+    if (N < J) return -1;
+    else if (N > J) return 1;
+
+    return 0; // Strings are equal
+}
 }
