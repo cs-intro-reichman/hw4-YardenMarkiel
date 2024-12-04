@@ -96,17 +96,27 @@ public class ArrCharOps {
     }
 
     public static int hashCode(char[] arr) {
-        int result = 0;
-    
-        if (arr == null || arr.length == 0) { // אם המערך ריק או null
-            return 0;
+        // טיפול במקרה שהמערך הוא null או ריק
+        if (arr == null || arr.length == 0) {
+            return 0; // ערך שמתאים לציפיות
         }
     
+        int result = 0; // התחלה מ-0
         for (int i = 0; i < arr.length; i++) {
-            result = 31 * result + arr[i]; // חישוב hash פשוט
+            result = 31 * result + arr[i]; // חישוב Hash Code
         }
     
-        return result;
+        // הדפסה של המערך
+        System.out.print("HashCode for array [");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]: " + result);
+    
+        return result; // החזרת התוצאה
     }
 
 public static int compareTo(String str1, String str2) {
