@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 /** A library of operations on arrays of characters (char values).
  *  The library also features a string comparison method. */
@@ -97,13 +96,23 @@ public class ArrCharOps {
     }
 
     public static int hashCode(char[] arr) {
-    int result = 0;
-    for (int i = 0; i < arr.length; i++) {
-        result = 31 * result + arr[i];
+        if (arr == null || arr.length == 0) {
+            return 0; // ערך מתאים למערך ריק או null
+        }
+    
+        int result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            result = 31 * result + arr[i];
+        }
+        for (int i = 0; i < arr.length; i++) { // הלולאה מודפסת את המערך בצורה ידנית
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println(" - HashCode: " + result); // הדפסת הערך הסופי
+        return result;
     }
-    System.out.println("HashCode for array " + Arrays.toString(arr) + ": " + result);  // Debugging output
-    return result;
-}
 
 public static int compareTo(String str1, String str2) {
     if (str1.length() == 0 || str2.length() == 0) return -2;
