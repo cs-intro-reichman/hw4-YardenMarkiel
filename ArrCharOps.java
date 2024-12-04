@@ -96,24 +96,15 @@ public class ArrCharOps {
     }
 
     public static int hashCode(char[] arr) {
-        if (arr == null || arr.length == 0) { // טיפול במערך ריק או null
-            return 0; // ערך מתאים למקרה זה
-        }
-    
         int result = 0;
-        for (int i = 0; i < arr.length; i++) {
-            result = 31 * result + arr[i]; // חישוב ה-hash בצורה ידנית
+    
+        if (arr == null || arr.length == 0) { // אם המערך ריק או null
+            return 0;
         }
     
-        // הדפסה ידנית של המערך (במקום Arrays.toString)
-        System.out.print("HashCode for array [");
         for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-            if (i < arr.length - 1) {
-                System.out.print(", ");
-            }
+            result = 31 * result + arr[i]; // חישוב hash פשוט
         }
-        System.out.println("]: " + result);
     
         return result;
     }
